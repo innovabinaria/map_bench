@@ -1,4 +1,3 @@
-//! Process RSS sampler (sysinfo-based).
 
 use sysinfo::{Pid, ProcessesToUpdate, System};
 
@@ -29,7 +28,7 @@ impl MemSampler {
         self.sys
             .refresh_processes(ProcessesToUpdate::Some(&[self.pid]), true);
         if let Some(p) = self.sys.process(self.pid) {
-            bytes_to_mib(p.memory() as u128) // sysinfo 0.37.x returns bytes
+            bytes_to_mib(p.memory() as u128) 
         } else {
             0
         }
