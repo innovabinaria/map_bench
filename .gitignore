@@ -1,0 +1,40 @@
+# === Rust ===
+/target/
+**/*.rs.bk
+Cargo.lock
+*.rs.bk
+
+# === Build Artifacts ===
+*.rlib
+*.dll
+*.so
+*.dylib
+*.exe
+
+# === IntelliJ / VSCode ===
+.vscode/
+.idea/
+*.sw?
+
+# === OS Files ===
+.DS_Store
+Thumbs.db
+
+# === Docker ===
+*.tar
+docker-entry-point.sh
+lib/
+logs/
+
+# === Logs ===
+*.log
+
+# === Backups ===
+*~
+*.bak
+*.tmp
+
+# === Misc ===
+.env
+.env.*
+*.orig
