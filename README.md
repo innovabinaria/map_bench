@@ -36,6 +36,8 @@ For each structure:
 
 ## 📁 Project layout
 
+```
+
 src/
 ├─ main.rs                 # CLI: no args => run all; with args => one benchmark
 ├─ lib.rs                  # Library crate entry
@@ -48,6 +50,7 @@ src/
    ├─ hashmap.rs           # HashMap benchmark
    ├─ btreemap.rs          # BTreeMap benchmark
    └─ vec_sorted.rs        # Sorted Vec + binary_search benchmark
+```
 
 ---
 
@@ -129,50 +132,11 @@ Mem peak:         48 MiB
 
 ---
 
-## 🧹 Code quality
-
-* Modular code with single-purpose modules.
-* No “magic numbers”: named, documented constants.
-* Clippy-friendly (uniform hex grouping, etc.).
-* Pre-generated data to reduce noise in measured sections.
-
----
-
-## 🛠️ Troubleshooting
-
-* **`could not find module benches`**
-  Ensure `src/benches/mod.rs` exists with:
-
-  ```rust
-  pub mod hashmap;
-  pub mod btreemap;
-  pub mod vec_sorted;
-  ```
-
-  and `src/lib.rs` has:
-
-  ```rust
-  pub mod benches;
-  pub mod cli;
-  pub mod config;
-  pub mod data;
-  pub mod mem;
-  pub mod timing;
-  ```
-
 * **Memory looks absurdly large (tens of GB)**
   That usually happens if bytes are misinterpreted as KiB/MiB. This repo converts bytes → MiB correctly.
 
 * **Unstable timings**
   Close heavy apps, use `--release`, run multiple times and average. Increasing `N`/`Q` improves signal/noise.
-
----
-
-## 🧭 Roadmap (optional)
-
-* CSV output mode (`--csv`) for plotting in spreadsheets/dashboards.
-* Configurable **mixed workloads** (e.g., 70% get, 20% insert, 10% delete).
-* Extra metrics (iteration cost, BTreeMap ranges, batched Vec deletions).
 
 ---
 
